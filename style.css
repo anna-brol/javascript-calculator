@@ -1,0 +1,29 @@
+.button, .color, #display, .button_zero {
+    display: flex;
+    border-radius: 7px;
+    margin: 6px 6px;
+    justify-content: center;
+    align-items: center;
+    font-size: 38px;
+}
+
+.button, .color, .button_zero {
+    background-color: rgb(199, 189, 189);
+    height: 80px;
+    width: 100px;
+}
+
+.button_zero {
+    height: 80px;
+    width: 200px;
+}
+
+#display {
+    background-color: rgb(209, 135, 135);
+    height: 100px;
+    width: 200px;
+}
+
+.board { 
+    display: grid; 
+}
