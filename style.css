@@ -1,10 +1,12 @@
 body {
     display: flex;
     justify-content: center;
+    height: 100vh;
+    overflow: hidden;
 }
 
 .container {
-    background-color: #e0abab;
+    background-color: #304f5a;
     height: 700px;
     width: 500px;
     border-radius: 5px;
@@ -15,7 +17,7 @@ body {
 }
 
 #display {
-    background-color: rgb(121, 121, 121);
+    background-color: rgb(164, 172, 172);
     color: white;
     height: 130px;
     width: 450px;
@@ -30,7 +32,7 @@ body {
 }
 
 .board {
-    background-color: #a88181;
+    background-color: #878d8c;
     height: 460px;
     width: 450px;
     border-radius: 2px;
@@ -58,19 +60,31 @@ body {
 }
 
 .button {
-    background-color: rgb(199, 189, 189);
+    background-color: rgb(193, 207, 202);
     height: 80px;
     width: 100px;
 }   
 
 .color, #equal  {
-    background-color: rgb(205, 121, 153);
+    background-color: rgb(247, 214, 32);
     height: 80px;
     width: 100px;
 }
 
 .grey {
-    background-color: rgb(121, 205, 170);
+    background-color: rgb(88, 189, 139);
     height: 80px;
     width: 100px;
+}
+
+.button:hover {
+    background-color: rgb(163, 173, 170);
+}
+
+.color:hover, #equal:hover {
+    background-color: rgb(192, 176, 33);
+}
+
+.grey:hover {
+    background-color: rgb(82, 163, 123);
 }
