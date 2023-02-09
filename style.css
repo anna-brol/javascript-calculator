@@ -1,4 +1,54 @@
-.button, .color, #display, .button_zero {
+body {
+    display: flex;
+    justify-content: center;
+}
+
+.container {
+    background-color: #e0abab;
+    height: 700px;
+    width: 500px;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+#display {
+    background-color: rgb(121, 121, 121);
+    color: white;
+    height: 130px;
+    width: 450px;
+    border-radius: 7px;
+    font-size: 60px;
+    text-align: right;
+}
+
+#zero, #clear {
+    height: 80px;
+    width: 215px;
+}
+
+.board {
+    background-color: #a88181;
+    height: 460px;
+    width: 450px;
+    border-radius: 2px;
+}
+
+#floor {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    user-select: none; 
+}
+
+#four {
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+    user-select: none;
+}
+
+.button, .color, .grey, #equal {
     display: flex;
     border-radius: 7px;
     margin: 6px 6px;
@@ -7,23 +57,20 @@
     font-size: 38px;
 }
 
-.button, .color, .button_zero {
+.button {
     background-color: rgb(199, 189, 189);
+    height: 80px;
+    width: 100px;
+}   
+
+.color, #equal  {
+    background-color: rgb(205, 121, 153);
     height: 80px;
     width: 100px;
 }
 
-.button_zero {
+.grey {
+    background-color: rgb(121, 205, 170);
     height: 80px;
-    width: 200px;
-}
-
-#display {
-    background-color: rgb(209, 135, 135);
-    height: 100px;
-    width: 200px;
-}
-
-.board { 
-    display: grid; 
+    width: 100px;
 }
