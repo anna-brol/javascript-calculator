@@ -1,15 +1,16 @@
 const buttons = document.querySelectorAll('.button');
 const operators = document.querySelectorAll('.color');
 const inputDisplay = document.getElementById('displayInput');
-const clear = document.querySelector('.grey');
+const clear = document.getElementById('clear');
 const resultDisplay = document.getElementById('resultInput');
 const equal = document.getElementById('equal');
+const dot = document.getElementById('dot');
+const percent = document.getElementById('percent');
 
-let result = 0;
-let result2 = 0;
+let result = null;
 let value = "";
 let value2 = "";
-let savedValue = "";
+let displayValue = "";
 let operator = "";
 
 
@@ -18,7 +19,8 @@ for (let i=0; i<buttons.length; i++) {
     buttons[i].addEventListener('click', e => {
         if (operator === "" && value.length<5){
         value += e.target.textContent;
-        inputDisplay.textContent = value;    
+        displayValue += e.target.textContent;
+        inputDisplay.textContent = displayValue;    
       } 
     })
 }
@@ -26,11 +28,20 @@ for (let i=0; i<buttons.length; i++) {
 //operator input
 for(let i=0; i<operators.length; i++) {
     operators[i].addEventListener('click', e => {
-    if (operator.length<1){
+    if (operator.length<1  && result === null){
         operator = e.target.textContent; 
-        value += operator;
-        inputDisplay.textContent = value;
+        displayValue += operator;
+        inputDisplay.textContent = displayValue;
     } 
+    else if (result !== null) {
+        operator = e.target.textContent;
+        value = result;
+        value2 = "";
+        result = null;
+        displayValue = value + operator;
+        inputDisplay.textContent = displayValue;
+        resultDisplay.textContent = "";
+    }
 })
 }
 
@@ -39,12 +50,24 @@ for (let i=0; i<buttons.length; i++) {
     buttons[i].addEventListener('click', e => {
         if (operator !== "" && value2.length<5){
             value2 += e.target.textContent;
-            value += value2;
-            inputDisplay.textContent = value;  
-            if (value !== 0) count();
-          } 
+            displayValue += e.target.textContent;
+            inputDisplay.textContent = displayValue;
+            count();
+        } 
 })
 }
+
+//dot
+dot.addEventListener('click', e => {
+    if (operator === "" && !value.includes(".")){
+        value += e.target.textContent;
+        displayValue += e.target.textContent;
+    } else if (!value2.includes(".")){
+        value2 += e.target.textContent;
+        displayValue += e.target.textContent;
+    }
+    inputDisplay.textContent = displayValue;
+})
 
 function count(){
   value = parseFloat(value);
@@ -61,31 +84,43 @@ function count(){
             result = value * value2;
             break;
         case '/':
-            if(value == 0) break;
             result = value/value2;
             break;
         default:
             break;
     }
-    resultDisplay.textContent = result;
-
-    value = result;
-    operator = '';
+    result = parseFloat(result.toFixed(6));
+    resultDisplay.textContent = result.toPrecision();
+    value2 = value2.toString();
 }
 
 equal.addEventListener('click', () => {
-    inputDisplay.textContent = value; 
-    resultDisplay.textContent = "";
+    operator = '';
+    value = result;
     value2 = "";
+    displayValue = value;
+    result = null;
+    inputDisplay.textContent = displayValue;
+    resultDisplay.textContent = "";  
+})
+
+percent.addEventListener('click', () => {
+    value = parseFloat(value);
+    result = value/100;
+    displayValue = value + "%";
+    inputDisplay.textContent = displayValue;
+    resultDisplay.textContent = result;
 })
 
 //clear 
 clear.addEventListener('click', function(){
     value = "";
-    result = 0;
+    result = null;
     operator = "";
+    displayValue = "";
+    value2 = "";
     displayInput.textContent = 0;
-    resultInput.textContent = 0;
+    resultInput.textContent = "";
 });
 
 
