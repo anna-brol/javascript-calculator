@@ -94,7 +94,7 @@ function count(){
     value2 = value2.toString();
 }
 
-equal.addEventListener('click', () => {
+function equation(){
     operator = '';
     value = result;
     value2 = "";
@@ -102,9 +102,12 @@ equal.addEventListener('click', () => {
     result = null;
     inputDisplay.textContent = displayValue;
     resultDisplay.textContent = "";  
-})
+}
+
+equal.addEventListener('click',equation);
 
 percent.addEventListener('click', () => {
+    equation();
     value = parseFloat(value);
     result = value/100;
     displayValue = value + "%";
