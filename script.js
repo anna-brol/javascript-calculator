@@ -107,12 +107,13 @@ function equation(){
 equal.addEventListener('click',equation);
 
 percent.addEventListener('click', () => {
-    equation();
-    value = parseFloat(value);
+    if (operator) equation();
+    value = parseFloat(value); 
     result = value/100;
     displayValue = value + "%";
+    result = parseFloat(result.toFixed(6));
     inputDisplay.textContent = displayValue;
-    resultDisplay.textContent = result;
+    resultDisplay.textContent = result.toPrecision();   
 })
 
 //clear 
